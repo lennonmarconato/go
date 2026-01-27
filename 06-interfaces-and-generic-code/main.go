@@ -20,6 +20,9 @@ type outputtable interface {
 }
 
 func main() {
+	result := add(1, 2)
+	fmt.Println(result)
+
 	printSomething(1)
 	printSomething(1.5)
 	printSomething("Hello")
@@ -127,4 +130,8 @@ func getUserInput(prompt string) string {
 	text = strings.TrimSuffix(text, "\r")
 
 	return text
+}
+
+func add[T int | float64 | string](a, b T) T {
+	return a + b
 }
