@@ -1,23 +1,22 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-	fact := factorial(6)
-	fmt.Println(fact)
+	// numbers := []int{1, 10, 15}
+	sum := sumup(1, 10, 15, 40, -5)
+
+	fmt.Println(sum)
 }
 
-func factorial(number int) int {
-	if number == 0 {
-		return 1
+func sumup(numbers ...int) int {
+	sum := 0
+
+	for _, val := range numbers {
+		sum += val
 	}
 
-	return number * factorial(number-1)
-	// result := 1
-
-	// for i := 1; i <= number; i++ {
-	// 	result = result * i
-	// }
-
-	// return result
+	return sum
 }
