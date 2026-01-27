@@ -12,4 +12,7 @@ func main() {
 	fmt.Println(productNames)
 
 	fmt.Println(prices[2])
+
+	featurePrices := prices[1:3]
+	fmt.Println(featurePrices)
 }
