@@ -8,11 +8,20 @@ type transformFn func(int) int
 
 func main() {
 	numbers := []int{1, 2, 3, 4}
+	moreNumbers := []int{5, 1, 2}
 	doubled := transformNumbers(&numbers, double)
 	tripled := transformNumbers(&numbers, triple)
 
 	fmt.Println(doubled)
 	fmt.Println(tripled)
+
+	transformFn1 := getTransformerFunction(&numbers)
+	transformFn2 := getTransformerFunction(&moreNumbers)
+
+	transformedNumbers := transformNumbers(&numbers, transformFn1)
+	moreTransformedNumbers := transformNumbers(&moreNumbers, transformFn2)
+	fmt.Println(transformedNumbers)
+	fmt.Println(moreTransformedNumbers)
 }
 
 func transformNumbers(numbers *[]int, transform transformFn) []int {
@@ -23,6 +32,14 @@ func transformNumbers(numbers *[]int, transform transformFn) []int {
 	}
 
 	return dNumbers
+}
+
+func getTransformerFunction(numbers *[]int) transformFn {
+	if (*numbers)[0] == 1 {
+		return double
+	} else {
+		return triple
+	}
 }
 
 func double(number int) int {
